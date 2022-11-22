@@ -1,28 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <the-board />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import TheBoard from './components/TheBoard.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TheBoard
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped>
+body {
+    background: linear-gradient(45deg, rgba(117, 120, 218, 1), rgb(255, 83, 152));
+    font-family: 'Segoe UI', Helvetica, Arial, 'system-ui', sans-serif;
+    color: #2c3e50;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
 }
 </style>
+
+

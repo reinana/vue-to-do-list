@@ -1,0 +1,121 @@
+:root {
+    --list-color: #EBECF0;
+    --text-color: #495057;
+}
+
+html {
+    font-family: "Noto Sans Japanese", "Noto Sans", 'system-ui', sans-serif;
+    color: #2c3e50;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+}
+
+body {
+    background: linear-gradient(45deg, rgba(117, 120, 218, 1), rgb(255, 83, 152));
+
+}
+
+.grass-back {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(14.5px);
+    -webkit-backdrop-filter: blur(14.5px);
+    border-radius: 5px;
+}
+
+header {
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    background: rgba(144, 144, 144, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(14.5px);
+    -webkit-backdrop-filter: blur(14.5px);
+}
+
+main {
+    padding: 0 10px;
+    width: calc(100% - 40px);
+    height: 100%;
+}
+
+
+.addlist {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 20rem;
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    opacity: 0.5;
+}
+
+.close-btn:hover {
+    color: white;
+}
+
+.add-box {
+    min-width: 20rem;
+    width: 20rem;
+    border-radius: 5px;
+    background-color: #ccc;
+}
+
+.text-input {
+    border-radius: 5px;
+    line-height: 2.8rem;
+    width: 20rem;
+}
+
+.list {
+    background-color: var(--list-color);
+    color: var(--text-color);
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 5px;
+    min-width: 21rem;
+    width: 21rem;
+    vertical-align: top;
+}
+
+.list-title {
+    width: 20rem;
+    font-weight: bold;
+}
+
+.list-counter {
+    color: rgb(0, 140, 255);
+    padding: 15px;
+}
+
+.listheader {
+    position: relative;
+}
+
+.deletelist {
+    display: inline;
+    position: absolute;
+    top: -0.2rem;
+    right: .4rem;
+    font-size: 1.5rem;
+}
+
+.deletelist:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 20rem;
+    cursor: pointer;
+}
+
+.body {
+    font-size: 18px;
+    width: 100%;
+    word-wrap: break-word;
+}
