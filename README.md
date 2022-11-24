@@ -1,4 +1,8 @@
 # to-do-list
+Recursion Vueコースの課題です。
+trello風の看板タスクアプリケーションを作成しました。
+ドラッグアンドドロップができます。
+
 
 ## Project setup
 ```
