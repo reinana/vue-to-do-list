@@ -15,9 +15,6 @@
                 >
                     カードを追加
                 </button>
-                <!-- <div class="close-btn d-flex align-items-center" @click="close">
-                    <font-awesome-icon icon="fas fa-times" />
-                </div> -->
             </div>
         </form>
     </div>
@@ -37,7 +34,7 @@ export default {
         };
     },
     methods: {
-        addList: function () {
+        addCard: function () {
             this.$store.dispatch("addcard", { body: this.body, listIndex: this.listIndex });
             this.body = "";
         },

@@ -4,6 +4,8 @@
         <card-detail
             v-if="detailView"
             @close="hideDetail"
+            :cardIndex="cardIndex"
+            :listIndex="listIndex"
         />
         <header>
             <div class="d-flex justify-content-between align-items-center">
@@ -115,15 +117,24 @@
                     >
                         <p class="mb-0">招待する</p>
                     </div>
-                    <p class="mb-0">All: 0 tasks</p>
+                    <p class="mb-0 pl-1">残り: {{ totalCardCount }} タスク</p>
                 </div>
-                <div class="board-main row align-items-start p-1">
+                <draggable
+                    :list="lists"
+                    @end="movingList"
+                    
+                    class="board-main d-flex align-items-start p-1"
+                >
                     <the-list
                         v-for="(item, index) in lists"
                         :key="item.id"
                         :title="item.title"
                         :cards="item.cards"
                         :listIndex="index"
+                        @detailonBoard="showDetail"
+                        @change="movingCard"
+                        @dragstart="dragStart(index)"
+                       
                     />
                     <div>
                         <button
@@ -140,14 +151,15 @@
                             <list-add />
                         </div>
                     </div>
-                </div>
+                </draggable>
             </div>
         </main>
     </div>
 </template>
 
 <script>
-// ここにJSを書きます
+import draggable from "vuedraggable";
+
 import ListAdd from "./ListAdd.vue";
 import TheList from "./TheList.vue";
 import CardDetail from "./CardDetail.vue";
@@ -159,21 +171,42 @@ export default {
     // 他のコンポーネントからimportして使用できる
     data() {
         return {
-            detailView: true,
+            detailView: false,
+            dragIndex: 0,
         };
     },
     components: {
         ListAdd,
         TheList,
         CardDetail,
+        draggable,
     },
     computed: {
         ...mapState(["lists"]),
+        totalCardCount() {
+            return this.$store.getters.totalCardCount;
+        },
     },
     methods: {
         hideDetail() {
             if (this.detailView) this.detailView = false;
         },
+        showDetail(cardId, listId) {
+            this.cardIndex = cardId;
+            this.listIndex = listId;
+            this.detailView = true;
+        },
+        movingCard: function () {
+            this.$store.dispatch("updateList", { lists: this.lists });
+        },
+        movingList: function () {
+            this.$store.dispatch("updateList", { lists: this.lists });
+        },
+        dragStart: function(index) {
+            console.log(indexedDB)
+            this.dragIndex = index;
+        },
+
     },
 };
 </script>

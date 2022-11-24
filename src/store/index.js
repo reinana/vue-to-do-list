@@ -11,7 +11,7 @@ const store = new Vuex.Store({
         {
             title: 'Backlog',
             cards: [
-                {body: 'Englishaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'},
+                {body: 'English'},
                 {body: 'Mathematics'},
             ]
         },
@@ -28,6 +28,12 @@ const store = new Vuex.Store({
     ],
   },
   getters: {
+    totalCardCount(state) {
+        let count = 0;
+        state.lists.map(content => count += content.cards.length)
+        return count
+    },
+    getCard: state => num => state.cards[num] // メソッドアクセススタイル
   },
   mutations: {
     addlist(state, payload) {
@@ -40,7 +46,10 @@ const store = new Vuex.Store({
         state.lists[payload.listIndex].cards.push({ body: payload.body})
     },
     removecard(state, payload) {
-        state.lists[payload.listIndex].splice(payload.cardIndex, 1)
+        state.lists[payload.listIndex]["cards"].splice(payload.cardIndex, 1)
+    },
+    updateList(state, payload) {
+        state.lists = payload.lists
     }
   },
   actions: {
@@ -56,6 +65,9 @@ const store = new Vuex.Store({
     removecard(context, payload) {
         context.commit('removecard', payload)
     },
+    updateList(context, payload) {
+        context.commit('updateList', payload)
+    }
 
   },
   modules: {

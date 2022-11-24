@@ -2,7 +2,7 @@
     <div class="popup-back d-flex justify-content-center align-items-center">
         <div class="popup p-2">
             <div class="detail-header d-flex justify-content-between p-2">
-                <h2 class="detail-title">タイトル {{ body }}</h2>
+                <h2 class="detail-title">{{ lists[listIndex]["cards"][cardIndex]["body"] }}</h2>
                 <div class="close-btn" @click="closeDetail">
                     <font-awesome-icon icon="fas fa-times" />
                 </div>
@@ -58,24 +58,29 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
     props: {
-        body: {
-            type: String,
-            required: true,
-        },
-        // listIndex: {
-        //     type: Number,
+        // body: {
+        //     type: String,
         //     required: true,
         // },
+        listIndex: {
+            type: Number,
+            required: true,
+        },
         cardIndex: {
             type: Number,
             required: true,
         },
     },
+    computed: {
+        ...mapState(["lists"]),
+    },
     data() {
         return {
             comment: '',
+           
         }
     },
     methods: {
@@ -86,6 +91,7 @@ export default {
             
             if(confirm('削除しますか？')) {
                 this.$store.dispatch('removecard', { cardIndex: this.cardIndex, listIndex: this.listIndex })
+                this.closeDetail();
             }
         },
     }

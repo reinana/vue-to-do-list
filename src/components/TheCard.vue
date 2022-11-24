@@ -39,10 +39,13 @@ export default {
         //         this.$store.dispatch('removecard', { cardIndex: this.cardIndex, listIndex: this.listIndex })
         //     }
         // },
-        showDetail: function() {
-            console.log("thecardopen")
-            this.$emit('detail');
+        showDetail() {
+            console.log("thecardopen"+this.cardIndex)
+            this.$emit('detail', this.cardIndex, this.listIndex);
         }
     }
 }
 </script>
+<style scoped>
+
+</style>
